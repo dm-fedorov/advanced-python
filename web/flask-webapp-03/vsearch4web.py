@@ -1,19 +1,17 @@
 from flask import Flask, render_template, request, escape
 from vsearch import search4letters
-import mysql.connector
+import sqlite3
 
 def log_request(req: 'flask-request', res: str) -> None:
     """ Log details of the web request and the results."""
-    dbconfig = { 'host': '127.0.0.1',
-                 'user': 'vsearch',
-                 'password': 'vsearchpasswd',
-                 'database': 'vsearchlogDB', }
-    conn = mysql.connector.connect(**dbconfig)
+        
+    conn = sqlite3.connect('logs.db')
+    
     cursor = conn.cursor()
     _SQL = """insert into log
-                (phrase, letters, ip, browser_string, results)
+                (phrase, letters, ip, browser_string, result)
                 values
-                (%s, %s, %s, %s, %s)"""
+                (?, ?, ?, ?, ?)"""
     cursor.execute(_SQL, (req.form['phrase'],
                           req.form['letters'],
                           req.remote_addr,
