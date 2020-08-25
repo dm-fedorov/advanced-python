@@ -2,7 +2,7 @@
 x = 30
 y = 62
 z = x + y
-# python3.7 -m dis test.py
+# python3.8 -m dis test.py
 
 '''
   1           0 LOAD_CONST               0 (30)
