@@ -1,12 +1,11 @@
+registry = []  
 
-registry = []  # <1>
+def register(func):  
+    print(f'running register({func})')  
+    registry.append(func)  
+    return func  
 
-def register(func):  # <2>
-    print(f'running register({func})')  # <3>
-    registry.append(func)  # <4>
-    return func  # <5>
-
-@register  # <6>
+@register  
 def f1():
     print('running f1()')
 
@@ -14,10 +13,10 @@ def f1():
 def f2():
     print('running f2()')
 
-def f3():  # <7>
+def f3():  
     print('running f3()')
 
-def main():  # <8>
+def main():  
     print('running main()')
     print('registry ->', registry)
     f1()
@@ -25,4 +24,4 @@ def main():  # <8>
     f3()
 
 if __name__=='__main__':
-    main()  # <9>
+    main()  
