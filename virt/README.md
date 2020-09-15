@@ -1,8 +1,8 @@
-### Создать среду Python 3.6 с именем "prj_01"
-conda create -n prj_01 python=3.6
+### Создать среду Python 3.8 с именем "prj_01"
+conda create -n prj_01 python=3.8
 
 ### Активация виртуальной среды:
-source activate prj_01
+conda activate prj_01
 
 ### Деактивация виртуальной среды:
-source deactivate
+conda deactivate
